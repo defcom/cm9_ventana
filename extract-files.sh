@@ -8,7 +8,7 @@ DIR=`dirname $FILE`
     if [ ! -d $BASE/$DIR ]; then
 mkdir -p $BASE/$DIR
     fi
-cp -v /adam/streak7/f/system/$FILE $BASE/$FILE
+cp -v $HOME/streak7/f/system/$FILE $BASE/$FILE
 done
 
 ./setup-makefiles.sh
