@@ -104,7 +104,7 @@ BOARD_HDMI_MIRROR_MODE := Scale
 # --------------------------------------------------------------------------
 BOARD_CAMERA_PREVIEW_HDMI_ONLY := false
 
-include frameworks/base/data/sounds/AudioPackage3.mk
+include frameworks/base/data/sounds/AudioPackageNewWave.mk
 -include vendor/nvidia/build/definitions.mk
 
 # Avoid the generation of ldrcc instructions
