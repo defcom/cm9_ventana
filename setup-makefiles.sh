@@ -1,7 +1,7 @@
 #!/bin/sh
 
-VENDOR=nvidia
-DEVICE=ventana
+VENDOR=dell
+DEVICE=streak7
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 
