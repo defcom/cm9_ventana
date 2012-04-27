@@ -60,8 +60,8 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
   $(LOCAL_PATH)/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
 
-#PRODUCT_COPY_FILES += \
-    #vendor/nvidia/tegra/graphics/android/build/egl.cfg:system/lib/egl/egl.cfg
+PRODUCT_COPY_FILES += \
+    vendor/dell/streak7/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
 PRODUCT_COPY_FILES += \
 	vendor/dell/streak7/proprietary/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
@@ -84,23 +84,23 @@ PRODUCT_COPY_FILES += \
 	device/dell/streak7/asound.conf:system/etc/asound.conf
 	#device/nvidia/common/bdaddr:system/etc/bluetooth/bdaddr
 
-#ifeq ($(wildcard vendor/nvidia/tegra/core-private),vendor/nvidia/tegra/core-private)
+ifeq ($(wildcard vendor/nvidia/tegra/core-private),vendor/nvidia/tegra/core-private)
 #PRODUCT_COPY_FILES += \
 #   vendor/nvidia/tegra/3rdparty/bcmbinaries/bcm4329/bluetooth/bcmpatchram.hcd:system/etc/firmware/bcm4329.hcd \
 #   vendor/nvidia/tegra/3rdparty/bcmbinaries/bcm4329/wlan/nh930_nvram.txt:system/etc/nvram.txt \
-#   vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/glgps_nvidiaTegra2android:system/bin/glgps_nvidiaTegra2android \
-#   vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-#   vendor/nvidia/tegra/3rdparty/broadcom/gps/bin/gps.tegra.so:system/lib/hw/gps.tegra.so \
+   vendor/dell/streak7/proprietary/bin/glgps_nvidiaTegra2android:system/bin/glgps_nvidiaTegra2android \
+   vendor/dell/streak7/proprietary/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+   vendor/dell/streak7/proprietary/lib/hw/gps.tegra.so:system/lib/hw/gps.tegra.so
 #   vendor/nvidia/tegra/customers/nvidia-partner/ventana/partition_data/config/nvcamera.conf:system/etc/nvcamera.conf
-#else
-#PRODUCT_COPY_FILES += \
+else
+PRODUCT_COPY_FILES += \
 #   vendor/nvidia/tegra/prebuilt/3rdparty/bcmbinaries/bcm4329/bluetooth/bcmpatchram.hcd:system/etc/firmware/bcm4329.hcd \
 #   vendor/nvidia/tegra/prebuilt/3rdparty/bcmbinaries/bcm4329/wlan/nh930_nvram.txt:system/etc/nvram.txt \
-#   vendor/nvidia/tegra/prebuilt/3rdparty/broadcom/gps/bin/glgps_nvidiaTegra2android:system/bin/glgps_nvidiaTegra2android \
-#   vendor/nvidia/tegra/prebuilt/3rdparty/broadcom/gps/bin/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-#   vendor/nvidia/tegra/prebuilt/3rdparty/broadcom/gps/bin/gps.tegra.so:system/lib/hw/gps.tegra.so \
+   vendor/dell/streak7/proprietary/bin/glgps_nvidiaTegra2android:system/bin/glgps_nvidiaTegra2android \
+   vendor/dell/streak7/proprietary/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+   vendor/dell/streak7/proprietary/lib/hw/gps.tegra.so:system/lib/hw/gps.tegra.so
 #   vendor/nvidia/tegra/odm/ventana/partition_data/config/nvcamera.conf:system/etc/nvcamera.conf
-#endif
+endif
 
 PRODUCT_PACKAGES += \
     sensors.ventana \
@@ -126,14 +126,14 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_CHARACTERISTICS := tablet
 
 # Default NVFlash boot config files.
-ifeq ($(wildcard vendor/nvidia/tegra/core-private),vendor/nvidia/tegra/core-private)
-PRODUCT_COPY_FILES += \
-    vendor/nvidia/tegra/customers/nvidia-partner/ventana/nvflash/ventana_A03_12MHz_EDB8132B1PB6DF_300Mhz_1GB_emmc_THGBM1G6D4EBAI4.bct:flash.bct \
-    vendor/nvidia/tegra/customers/nvidia-partner/ventana/nvflash/android_fastboot_emmc_full.cfg:flash.cfg
-else
-PRODUCT_COPY_FILES += \
-    vendor/nvidia/tegra/odm/ventana/nvflash/ventana_A03_12MHz_EDB8132B1PB6DF_300Mhz_1GB_emmc_THGBM1G6D4EBAI4.bct:flash.bct \
-    vendor/nvidia/tegra/odm/ventana/nvflash/android_fastboot_emmc_full.cfg:flash.cfg
-endif
+#ifeq ($(wildcard vendor/nvidia/tegra/core-private),vendor/nvidia/tegra/core-private)
+#PRODUCT_COPY_FILES += \
+#    vendor/nvidia/tegra/customers/nvidia-partner/ventana/nvflash/ventana_A03_12MHz_EDB8132B1PB6DF_300Mhz_1GB_emmc_THGBM1G6D4EBAI4.bct:flash.bct \
+#    vendor/nvidia/tegra/customers/nvidia-partner/ventana/nvflash/android_fastboot_emmc_full.cfg:flash.cfg
+#else
+#PRODUCT_COPY_FILES += \
+#    vendor/nvidia/tegra/odm/ventana/nvflash/ventana_A03_12MHz_EDB8132B1PB6DF_300Mhz_1GB_emmc_THGBM1G6D4EBAI4.bct:flash.bct \
+#    vendor/nvidia/tegra/odm/ventana/nvflash/android_fastboot_emmc_full.cfg:flash.cfg
+#endif
 
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay

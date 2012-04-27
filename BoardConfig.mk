@@ -50,14 +50,14 @@ USE_E2FSPROGS := true
 USE_OPENGL_RENDERER := true
 
 # OTA
-TARGET_RECOVERY_UPDATER_LIBS += libnvrecoveryupdater
+#TARGET_RECOVERY_UPDATER_LIBS += libnvrecoveryupdater
 
 # Skip droiddoc build to save build time
 BOARD_SKIP_ANDROID_DOC_BUILD := true
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
+#BOARD_HAVE_BLUETOOTH := true
+#BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
 #USE_CAMERA_STUB := false
@@ -104,8 +104,14 @@ BOARD_HDMI_MIRROR_MODE := Scale
 # --------------------------------------------------------------------------
 BOARD_CAMERA_PREVIEW_HDMI_ONLY := false
 
+#Sounds
 include frameworks/base/data/sounds/AudioPackageNewWave.mk
+
+ifneq ($(HAVE_NVIDIA_PROP_SRC),false)
+# Needed for source compilation of nvidia libraries
+-include vendor/nvidia/proprietary_src/build/definitions.mk
 -include vendor/nvidia/build/definitions.mk
+endif
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
