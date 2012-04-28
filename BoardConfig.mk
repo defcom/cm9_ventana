@@ -3,11 +3,11 @@ TARGET_BOARD_INFO_FILE := device/dell/streak7/board-info.txt
 BOARD_EGL_CFG := vendor/dell/streak7/proprietary/lib/egl/egl.cfg
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null video=tegrafb usbcore.old_scheme_first=1 tegraboot=sdmmc tegrapart=mmcblk0=system:900:20000:800,cache:20900:80000:800,misc:a0900:400:800,linux:a0e00:1000:800,userdata:a1f00:80000:800,recovery:122000:a00:800,intmmc:122B00:647900:800 boardtype=PR androidboot.hardware=ventana
 
-# inherit from the proprietary version
--include vendor/toshiba/betelgeuse/BoardConfigVendor.mk
-
 TARGET_BOARD_PLATFORM := tegra
 TARGET_TEGRA_VERSION := ap20
+
+# Streak 7 uses an internal sd card
+BOARD_HAS_SDCARD_INTERNAL := true
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -56,8 +56,8 @@ USE_OPENGL_RENDERER := true
 BOARD_SKIP_ANDROID_DOC_BUILD := true
 
 # Bluetooth
-#BOARD_HAVE_BLUETOOTH := true
-#BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
 #USE_CAMERA_STUB := false

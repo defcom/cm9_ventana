@@ -18,8 +18,7 @@ ifeq ($(TARGET_DEVICE),full_streak7)
 subdir_makefiles := \
 	$(LOCAL_PATH)/liblights/Android.mk \
 	$(LOCAL_PATH)/sensors/Android.mk \
-    $(LOCAL_PATH)/audio/Android.mk \
-	$(LOCAL_PATH)/libril-huawei/Android.mk
+    $(LOCAL_PATH)/audio/Android.mk
  
 include $(subdir_makefiles)
 endif
