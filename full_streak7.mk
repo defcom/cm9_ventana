@@ -4,6 +4,12 @@ $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+$(call inherit-product-if-exists, vendor/dell/streak7/streak7-vendor.mk)
+
+BOARD_WLAN_DEVICE_REV := bcm4330_b1
+
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+
 PRODUCT_NAME := full_streak7
 PRODUCT_DEVICE := streak7
 PRODUCT_MODEL := Streak7
@@ -12,6 +18,8 @@ PRODUCT_MANUFACTURER := DELL
 PRODUCT_LOCALES += en_US
 
 $(call inherit-product, build/target/product/languages_full.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/libcamera.so:obj/lib/libcamera.so \
@@ -75,11 +83,15 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
   	    vendor/dell/streak7/proprietary/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
-        vendor/dell/streak7/proprietary/etc/nvram.txt:system/etc/nvram.txt \
-        vendor/dell/streak7/proprietary/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-        vendor/dell/streak7/proprietary/lib/hw/gps.tegra.so:system/lib/hw/gps.tegra.so
+        vendor/dell/streak7/proprietary/etc/wlan/nvram.txt:system/etc/wlan/nvram.txt \
+        vendor/dell/streak7/proprietary/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
+        vendor/dell/streak7/proprietary/lib/gps.tegra.so:system/lib/gps.tegra.so
 
 PRODUCT_PACKAGES += \
+    sensors.ventana \
+    lights.ventana \
+    tegra_alsa.tegra \
+    audio.primary.tegra \
     audio.a2dp.default \
     make_ext4fs \
     drmserver \

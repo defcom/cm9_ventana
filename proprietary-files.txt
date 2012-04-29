@@ -47,9 +47,6 @@ lib/libnvtestio.so
 lib/libnvtestresults.so
 lib/libnvwinsys.so
 lib/libnvwsi.so
-lib/libmpl.so
-lib/libmlplatform.so
-lib/libmllite.so
 lib/gps.tegra.so
 lib/libstagefrighthw.so
 lib/libhuawei-ril.so

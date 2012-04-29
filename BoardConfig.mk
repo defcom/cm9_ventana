@@ -60,8 +60,8 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
-#USE_CAMERA_STUB := false
-#BOARD_VENDOR_USE_NV_CAMERA := true
+USE_CAMERA_STUB := false
+BOARD_VENDOR_USE_NV_CAMERA := true
 # omxcamera is default
 #TEGRA_CAMERA_TYPE := usb_uvc
 
