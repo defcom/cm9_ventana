@@ -26,7 +26,7 @@ MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 PRODUCT_COPY_FILES := \\
 $OUTDIR/proprietary/lib/libcamera.so:system/lib/libcamera.so \\
 $OUTDIR/proprietary/lib/libaudio.so:system/lib/libaudio.so \\
-$OUTDIR/proprietary/lib/libaudiopolicy.so:system/lib/libaudiopolicy.so 
+$OUTDIR/proprietary/lib/libaudiopolicy.so:system/lib/libaudiopolicy.so \\
 $OUTDIR/proprietary/lib/libril.so:system/lib/libril.so
 
 PRODUCT_COPY_FILES += \\

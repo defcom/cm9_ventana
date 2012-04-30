@@ -6,9 +6,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product-if-exists, vendor/dell/streak7/streak7-vendor.mk)
 
-BOARD_WLAN_DEVICE_REV := bcm4330_b1
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_WIFI_MODULE):system/lib/modules/bcm4329.ko
+endif
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+	LOCAL_KERNEL := device/dell/streak7/kernel
+else
+	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
 
 PRODUCT_NAME := full_streak7
 PRODUCT_DEVICE := streak7
@@ -28,8 +40,8 @@ $(LOCAL_PATH)/libaudiopolicy.so:obj/lib/libaudiopolicy.so \
 $(LOCAL_PATH)/liba2dp.so:obj/lib/liba2dp.so 
 
 PRODUCT_COPY_FILES += \
-    device/dell/streak7/init.streak7.rc:root/init.streak7.rc \
-    device/dell/streak7/ueventd.streak7.rc:root/ueventd.streak7.rc \
+    $(LOCAL_PATH)/init.streak7.rc:root/init.streak7.rc \
+    $(LOCAL_PATH)/ueventd.streak7.rc:root/ueventd.streak7.rc \
     frameworks/base/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -57,6 +69,11 @@ PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
   $(LOCAL_PATH)/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
   $(LOCAL_PATH)/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
+
+# VOLD
+PRODUCT_COPY_FILES += \
+        $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
+        $(LOCAL_PATH)/recovery.fstab:system/etc/recovery.fstab
 
 PRODUCT_COPY_FILES += \
     vendor/dell/streak7/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg
@@ -87,6 +104,10 @@ PRODUCT_COPY_FILES += \
         vendor/dell/streak7/proprietary/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
         vendor/dell/streak7/proprietary/lib/gps.tegra.so:system/lib/gps.tegra.so
 
+# media config xml file
+PRODUCT_COPY_FILES += \
+    device/dell/streak7/media_profiles.xml:system/etc/media_profiles.xml
+
 PRODUCT_PACKAGES += \
     sensors.ventana \
     lights.ventana \
@@ -100,6 +121,14 @@ PRODUCT_PACKAGES += \
     Gallery2 \
     Camera \
     librs_jni
+
+PRODUCT_PROPERTY_OVERRIDES := \
+    wifi.interface=wlan0 \
+    wifi.supplicant_scan_interval=15
+
+# Set default USB interface
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	persist.sys.usb.config=mtp
 
 include frameworks/base/build/tablet-dalvik-heap.mk
 
