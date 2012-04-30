@@ -21,9 +21,9 @@ $(LOCAL_PATH)/libaudio.so:obj/lib/libaudio.so \
 $(LOCAL_PATH)/libaudiopolicy.so:obj/lib/libaudiopolicy.so \
 $(LOCAL_PATH)/liba2dp.so:obj/lib/liba2dp.so 
 
-# Init.rc
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.streak7.rc:root/init.streak7.rc \
+    $(LOCAL_PATH)/init.streak7.usb.rc:root/init.streak7.usb.rc \
     $(LOCAL_PATH)/ueventd.streak7.rc:root/ueventd.streak7.rc
 
 # Permissions
@@ -57,39 +57,9 @@ PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
         $(LOCAL_PATH)/recovery.fstab:system/etc/recovery.fstab
 
-# EGL
-PRODUCT_COPY_FILES += \
-    vendor/dell/streak7/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg
-
-# ALSA Sound configs
-PRODUCT_COPY_FILES += \
-	vendor/dell/streak7/proprietary/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
-	vendor/dell/streak7/proprietary/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
-	vendor/dell/streak7/proprietary/etc/asound.conf:system/etc/asound.conf
-
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
-# Wifi and gps
 PRODUCT_COPY_FILES += \
-  	    vendor/dell/streak7/proprietary/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
-        vendor/dell/streak7/proprietary/etc/wlan/nvram.txt:system/etc/wlan/nvram.txt \
-        $(LOCAL_PATH)/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
-        vendor/dell/streak7/proprietary/etc/gpsconfig.xml:system/etc/gpsconfig.xml \
-        vendor/dell/streak7/proprietary/lib/gps.tegra.so:system/lib/gps.tegra.so
+        $(LOCAL_PATH)/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
 
 # media config xml file
 PRODUCT_COPY_FILES += \
@@ -112,6 +82,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
+
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    service.adb.root=1
+
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
