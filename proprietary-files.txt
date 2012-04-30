@@ -59,6 +59,7 @@ lib/hw/gralloc.tegra.so
 lib/hw/hwcomposer.tegra.so
 lib/hw/overlay.tegra.so
 lib/hw/tegra_alsa.streak7.so
+lib/hw/dhd.ko
 
 etc/firmware/bcm4329.hcd
 etc/wlan/nvram.txt
@@ -107,3 +108,4 @@ usr/share/alsa/pcm/dpl.conf
 bin/nv_hciattach
 bin/nvrm_daemon
 bin/nvtest
+bin/glgps

@@ -30,7 +30,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_SHARED_LIBRARIES := liblog
 
-LOCAL_MODULE := lights.ventana
+LOCAL_MODULE := lights.streak7
 
 include $(BUILD_SHARED_LIBRARY)
 

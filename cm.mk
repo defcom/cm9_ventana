@@ -1,8 +1,11 @@
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+
+$(call inherit-product, vendor/cm/config/gsm.mk)
+
 # Inherit device configuration for streak7.
 $(call inherit-product, device/dell/streak7/full_streak7.mk)
-
-# Inherit some common cyanogenmod stuff.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
 #
 # Setup device specific product configuration.
