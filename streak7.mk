@@ -83,15 +83,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0 \
-    service.adb.root=1
-
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=mtp
-
 include frameworks/base/build/tablet-dalvik-heap.mk
 
 # we have enough storage space to hold precise GC data

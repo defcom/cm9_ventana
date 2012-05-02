@@ -14,12 +14,4 @@
 
 LOCAL_PATH := $(my-dir)
 
-ifeq ($(TARGET_DEVICE),full_streak7)
 include $(all-subdir-makefiles)
-#subdir_makefiles := \
-#	$(LOCAL_PATH)/liblights/Android.mk \
-#	$(LOCAL_PATH)/sensors/Android.mk \
-#   $(LOCAL_PATH)/audio/Android.mk
- 
-#include $(subdir_makefiles)
-endif

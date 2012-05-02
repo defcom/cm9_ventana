@@ -20,7 +20,7 @@ on early-init
 
 on fs
 # Okpa, symbolic link named partitions
-    exec /sbin/ln_named_part mmcblk3 /dev
+#    exec /sbin/ln_named_part mmcblk3 /dev
 
 # misc setting
     symlink /dev/block/mmcblk3p12 /dev/general_setting
@@ -33,11 +33,11 @@ on fs
     chown root system /dev/MSC
     chmod 0660 /dev/MSC
 
-    mount ext4 /dev/APP /system wait ro
-    exec /system/bin/do_fsck
+    mount ext4 /dev/block/mmcblk3p3 /system wait ro
+#    exec /system/bin/do_fsck
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    mount ext3 /dev/UDA /data wait noatime nosuid nodev
-    mount ext3 /dev/CAC /cache wait noatime nosuid nodev
+    mount ext3 /dev/block/mmcblk3p7 /data wait noatime nosuid nodev
+    mount ext3 /dev/block/mmcblk3p4 /cache wait noatime nosuid nodev
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -165,7 +165,7 @@ service iprenew_eth0 /system/bin/dhcpcd -n
 
 # Qisda Isaac
 on property:init.svc.wpa_supplicant=stopped
- stop dhcpcd_wlan0
+    stop dhcpcd_wlan0
 
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # deamon will drop to user/group system/media_rw after initializing

@@ -1,8 +1,7 @@
 TARGET_PREBUILT_KERNEL := device/dell/streak7/kernel
 TARGET_BOARD_INFO_FILE := device/dell/streak7/board-info.txt
-BOARD_EGL_CFG := vendor/dell/streak7/proprietary/lib/egl/egl.cfg
-# Change console=tty0 to console=null for production
-BOARD_KERNEL_CMDLINE := console=tty0 no_console_suspend=1 video=tegrafb usbcore.old_scheme_first=1 androidboot.hardware=ventana
+BOARD_EGL_CFG := device/dell/streak7/egl.cfg
+BOARD_KERNEL_CMDLINE := console=null no_console_suspend=1 video=tegrafb usbcore.old_scheme_first=1 androidboot.hardware=ventana
 
 -include vendor/dell/streak7/BoardConfigVendor.mk
 
@@ -61,7 +60,7 @@ USE_OPENGL_RENDERER := true
 BOARD_SKIP_ANDROID_DOC_BUILD := true
 
 # Bluetooth
-#BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
@@ -129,9 +128,10 @@ COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_EXTERNAL_IMAGE -DMISSING_GRALLOC_BUFFERS
 COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_PIXEL_FORMAT_YV12
 COMMON_GLOBAL_CFLAGS += -DBOARD_GL_OES_EGL_IMG_EXTERNAL_HACK
 
-BOARD_PROVIDES_LIBRIL := true
+#BOARD_PROVIDES_LIBRIL := true
 DEVICE_RESOLUTION := 480x800
 
 # Use nicer font rendering
 BOARD_USE_SKIA_LCDTEXT := true
-BOARD_INCLUDES_TEGRA_JNI:= graphics,cursor
+
+#BOARD_INCLUDES_TEGRA_JNI:= graphics,cursor
