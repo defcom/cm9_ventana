@@ -1,16 +1,15 @@
 TARGET_PREBUILT_KERNEL := device/dell/streak7/kernel
 TARGET_BOARD_INFO_FILE := device/dell/streak7/board-info.txt
 BOARD_EGL_CFG := device/dell/streak7/egl.cfg
-BOARD_KERNEL_CMDLINE := console=null no_console_suspend=1 video=tegrafb usbcore.old_scheme_first=1 androidboot.hardware=ventana
+BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=tty0,115200n video=tegrafb usbcore.old_scheme_first=1 tegraboot=sdmmc tegrapart=mmcblk0=system:900:20000:800,cache:20900:80000:800,misc:a0900:400:800,linux:a0e00:1000:800,userdata:a1f00:80000:800,recovery:122000:a00:800,intmmc:122B00:647900:800 boardtype=PR androidboot.hardware=streak7
 
 -include vendor/dell/streak7/BoardConfigVendor.mk
 
 TARGET_BOARD_PLATFORM := tegra
-TARGET_BOARD_INFO_FILE := device/dell/streak7/board-info.txt
 TARGET_TEGRA_VERSION := ap20
 
 # Streak 7 uses an internal sd card
-BOARD_HAS_SDCARD_INTERNAL := true
+#BOARD_HAS_SDCARD_INTERNAL := true
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -49,6 +48,7 @@ BOARD_DATA_DEVICE := /dev/block/mmcblk0p6
 BOARD_DATA_FILESYSTEM := ext4
 BOARD_CACHE_DEVICE := /dev/block/mmcblk0p2
 BOARD_CACHE_FILESYSTEM := ext4
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 USE_E2FSPROGS := true
 USE_OPENGL_RENDERER := true
@@ -64,8 +64,8 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
-USE_CAMERA_STUB := true
-BOARD_VENDOR_USE_NV_CAMERA := true
+#USE_CAMERA_STUB := true
+#BOARD_VENDOR_USE_NV_CAMERA := true
 # omxcamera is default
 #TEGRA_CAMERA_TYPE := usb_uvc
 
@@ -109,7 +109,7 @@ BOARD_HDMI_MIRROR_MODE := Scale
 BOARD_CAMERA_PREVIEW_HDMI_ONLY := false
 
 #Sounds
-include frameworks/base/data/sounds/AudioPackageNewWave.mk
+-include frameworks/base/data/sounds/AudioPackageNewWave.mk
 
 ifneq ($(HAVE_NVIDIA_PROP_SRC),false)
 # Needed for source compilation of nvidia libraries
@@ -129,7 +129,7 @@ COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_PIXEL_FORMAT_YV12
 COMMON_GLOBAL_CFLAGS += -DBOARD_GL_OES_EGL_IMG_EXTERNAL_HACK
 
 #BOARD_PROVIDES_LIBRIL := true
-DEVICE_RESOLUTION := 480x800
+#DEVICE_RESOLUTION := 480x800
 
 # Use nicer font rendering
 BOARD_USE_SKIA_LCDTEXT := true

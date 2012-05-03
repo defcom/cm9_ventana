@@ -189,3 +189,13 @@ bin/sensors_daemon
 bin/glgps
 bin/do_fsck
 bin/wifid
+bin/e2fsck
+bin/regionapp
+bin/regionctrl
+bin/dbupgrade
+bin/logd2
+bin/mmService
+bin/hidkbd
+bin/lfinit
+
+xbin/inetd

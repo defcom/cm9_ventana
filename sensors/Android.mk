@@ -33,7 +33,7 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_MODULE := sensors.streak7
+LOCAL_MODULE := sensors.tegra
 
 include $(NVIDIA_SHARED_LIBRARY)
 

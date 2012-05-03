@@ -70,8 +70,8 @@ PRODUCT_PACKAGES += \
     audio.primary.tegra \
     audio.a2dp.default \
     audio_policy.tegra \
-    sensors.streak7 \
-    lights.streak7 \
+    sensors.tegra \
+    lights.tegra \
     tegra_alsa.tegra \
     audio.primary.tegra \
     audio.a2dp.default \
@@ -82,11 +82,20 @@ PRODUCT_PACKAGES += \
     Gallery2 \
     Camera \
     librs_jni \
+    libhuaweigeneric-ril \
     libdrmframework_jni
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=15 \
+    ro.sf.lcd_density=120
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.secure=0 \
+    persist.sys.strictmode.visual=0
+
+ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.strictmode.visual=0
 
 include frameworks/base/build/tablet-dalvik-heap.mk
 
