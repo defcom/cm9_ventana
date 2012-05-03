@@ -133,5 +133,4 @@ DEVICE_RESOLUTION := 480x800
 
 # Use nicer font rendering
 BOARD_USE_SKIA_LCDTEXT := true
-
-#BOARD_INCLUDES_TEGRA_JNI:= graphics,cursor
+BOARD_INCLUDES_TEGRA_JNI:= graphics,cursor

@@ -48,24 +48,27 @@ PRODUCT_COPY_FILES += \
 
 # Key layout and touch screen
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-  $(LOCAL_PATH)/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
-  $(LOCAL_PATH)/panjit_touch.idc:system/usr/idc/panjit_touch.idc
+    $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/atmel-maxtouch.idc:system/usr/idc/mXT224_touchscreen.idc \
+    $(LOCAL_PATH)/panjit_touch.idc:system/usr/idc/panjit_touch.idc
 
 # FSTAB
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
-        $(LOCAL_PATH)/recovery.fstab:system/etc/recovery.fstab
+    $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
+    $(LOCAL_PATH)/recovery.fstab:system/etc/recovery.fstab
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 PRODUCT_COPY_FILES += \
-        $(LOCAL_PATH)/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
+    $(LOCAL_PATH)/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
 
 # media config xml file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGES += \
+    audio.primary.tegra \
+    audio.a2dp.default \
+    audio_policy.tegra \
     sensors.streak7 \
     lights.streak7 \
     tegra_alsa.tegra \
@@ -77,7 +80,8 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     Gallery2 \
     Camera \
-    librs_jni
+    librs_jni \
+    libdrmframework_jni
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
