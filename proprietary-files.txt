@@ -187,3 +187,5 @@ bin/nvtest
 bin/sdcard_oem
 bin/sensors_daemon
 bin/glgps
+bin/do_fsck
+bin/wifid

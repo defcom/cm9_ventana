@@ -16,15 +16,16 @@ PRODUCT_COPY_FILES += \
 
 # Shared Libraries
 PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/libcamera.so:obj/lib/libcamera.so \
-$(LOCAL_PATH)/libaudio.so:obj/lib/libaudio.so \
-$(LOCAL_PATH)/libaudiopolicy.so:obj/lib/libaudiopolicy.so \
-$(LOCAL_PATH)/liba2dp.so:obj/lib/liba2dp.so 
+    $(LOCAL_PATH)/libcamera.so:obj/lib/libcamera.so \
+    $(LOCAL_PATH)/libaudio.so:obj/lib/libaudio.so \
+    $(LOCAL_PATH)/libaudiopolicy.so:obj/lib/libaudiopolicy.so \
+    $(LOCAL_PATH)/liba2dp.so:obj/lib/liba2dp.so 
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.streak7.rc:root/init.streak7.rc \
     $(LOCAL_PATH)/init.streak7.usb.rc:root/init.streak7.usb.rc \
-    $(LOCAL_PATH)/ueventd.streak7.rc:root/ueventd.streak7.rc
+    $(LOCAL_PATH)/ueventd.streak7.rc:root/ueventd.streak7.rc \
+    $(LOCAL_PATH)/ln_named_part:root/sbin/ln_named_part
 
 # Permissions
 PRODUCT_COPY_FILES += \

@@ -20,7 +20,7 @@ on early-init
 
 on fs
 # Okpa, symbolic link named partitions
-#    exec /sbin/ln_named_part mmcblk3 /dev
+    exec /sbin/ln_named_part mmcblk3 /dev
 
 # misc setting
     symlink /dev/block/mmcblk3p12 /dev/general_setting
@@ -34,7 +34,7 @@ on fs
     chmod 0660 /dev/MSC
 
     mount ext4 /dev/block/mmcblk3p3 /system wait ro
-#    exec /system/bin/do_fsck
+    exec /system/bin/do_fsck
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     mount ext3 /dev/block/mmcblk3p7 /data wait noatime nosuid nodev
     mount ext3 /dev/block/mmcblk3p4 /cache wait noatime nosuid nodev
