@@ -92,10 +92,12 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.secure=0 \
-    persist.sys.strictmode.visual=0
+    persist.sys.strictmode.visual=0 \
+    persist.service.adb.enable=1
 
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.strictmode.visual=0
+ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 
 include frameworks/base/build/tablet-dalvik-heap.mk
 
